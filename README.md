@@ -12,14 +12,21 @@
 ---
 
 ## 📌 Project Overview
-This project performs a comprehensive analysis of **NYC Yellow Taxi trip data (2023)**, processing over **1.6 million validated records**. The primary goal was to uncover operational patterns, analyze tipping behaviors across payment methods, and implement a rule-based algorithm to detect fraudulent anomalies.
+This project performs a comprehensive analysis of **NYC Yellow Taxi trip data (2023)** to uncover operational patterns, analyze tipping behaviors, and detect fraudulent anomalies.
 
-Using **Python** and **Pandas**, raw data was cleaned and transformed into actionable insights, helping to identify potential revenue leakage and service efficiency gaps.
+Using **Python** and **Pandas**, the raw data was cleaned, engineered, and analyzed to identify potential revenue leakage and service efficiency gaps.
+
+## 📂 Data Source & Sampling
+The dataset used in this project is sourced from the official **NYC Open Data** portal.
+* **Original Source:** [2023 Yellow Taxi Trip Data](https://data.cityofnewyork.us/Transportation/2023-Yellow-Taxi-Trip-Data/4b4i-vvec/about_data)
+* **Data Sampling:** To ensure computational efficiency while maintaining statistical significance, the dataset was downsampled to a subset of **5 million records** (`2023_Taxi_5M.csv`) for this analysis.
+
+---
 
 ## 💡 Key Business Insights
 
 ### 🚨 Fraud & Anomaly Detection
-A custom `fraud_score` logic was implemented to flag suspicious rides. Out of the analyzed dataset:
+A custom `fraud_score` logic was implemented to flag suspicious rides. Out of the analyzed subset:
 * **14,898 rides** were flagged as "High Risk" (Score ≥ 1).
 * **Key Fraud Indicators Identified:**
     * **Money Laundering Patterns:** Rides with short distances (<1 mile) but excessive fares (>$50).
@@ -41,8 +48,7 @@ Analysis revealed a critical disparity in driver compensation based on payment t
 ## 🛠️ Technical Methodology
 
 ### 1. Data Cleaning & Preprocessing
-* **Dataset:** Processed a heavy CSV file (`2023_Taxi_5M.csv`).
-* **Filtering:** Removed realistic outliers (negative fares, distances > 100 miles, 0 passenger counts).
+* **Filtering:** Removed realistic outliers (negative fares, distances > 100 miles, 0 passenger counts) from the 5M sample.
 * **Type Casting:** Optimized memory usage by converting datetime strings to datetime objects.
 
 ### 2. Feature Engineering
@@ -54,7 +60,7 @@ Created complex metrics to drive the analysis:
 
 ### 3. Exploratory Data Analysis (EDA)
 * Visualized rush hour demand curves.
-* compared tipping rates across different `RateCodeID` types.
+* Compared tipping rates across different `RateCodeID` types.
 * Analyzed weekend vs. weekday profitability.
 
 ---
